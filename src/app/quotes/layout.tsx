@@ -24,7 +24,7 @@ export default function QuotesLayout({ children }: PropsWithChildren) {
         <section className={'flex items-center justify-between'}>
           <Link href={'/quotes'} className={'inline-flex items-center gap-2'}>
             <Image
-              src={'quotes-logo.svg'}
+              src={'/quotes-logo.svg'}
               alt={'logo'}
               width={80}
               height={80}
