@@ -1,4 +1,4 @@
-import { type HTMLAttributes } from 'react'
+import { forwardRef, type HTMLAttributes } from 'react'
 import { cn } from '@/lib/utils'
 import { StarIcon } from 'lucide-react'
 import { Button } from '@/components/ui/button'
@@ -9,17 +9,19 @@ export interface QuoteCardProps {
   isFavorite: boolean
   onFavorite: () => void
 }
-
-export function QuoteCard({
-  className,
-  quote,
-  author,
-  isFavorite,
-  onFavorite,
-  ...props
-}: QuoteCardProps & HTMLAttributes<HTMLDivElement>) {
+export const QuoteCard = forwardRef<
+  HTMLDivElement,
+  QuoteCardProps & HTMLAttributes<HTMLDivElement>
+>(function QuoteCard(
+  { className, quote, author, isFavorite, onFavorite, ...props },
+  ref
+) {
   return (
-    <main className={cn('relative p-5 border-b', className)} {...props}>
+    <main
+      className={cn('relative p-5 border-b', className)}
+      {...props}
+      ref={ref}
+    >
       <div className={'w-11/12'}>
         <p className={'text-xl italic text-primary'}>{quote}</p>
         <small className={'text-secondary'}>- {author}</small>
@@ -37,4 +39,4 @@ export function QuoteCard({
       </Button>
     </main>
   )
-}
+})

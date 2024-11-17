@@ -13,16 +13,16 @@ export function ProductSearchInput({
   const { term, handleTermChange } = useProductsSearchParams()
 
   return (
-    <main className={cn('relative', className)} {...props}>
+    <div className={cn('relative', className)} {...props}>
       <Input
         value={term}
-        onChange={async (e) => {
-          await handleTermChange(e.target.value)
+        onChange={(e) => {
+          handleTermChange(e.target.value)
         }}
         className={'h-12 pl-12 text-base'}
         placeholder={'Search product'}
       />
       <SearchIcon className={'absolute left-3 top-1/2 -translate-y-1/2'} />
-    </main>
+    </div>
   )
 }
